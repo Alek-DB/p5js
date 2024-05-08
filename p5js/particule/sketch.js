@@ -1,15 +1,22 @@
-let scl = 8
+let scl = 4
 let xoff =0
 let yoff =0
 let zoff =0
-let increment = 0.04
-let z_increment = 0.00001
+let increment = 0.01
+let z_increment = 0.0001
 let cols
 let rows
 
 let particles = []
 let flowfield = []
 let show_arrow = true
+
+
+let state = 0;
+let a = 255;
+let r = 255;
+let g = 0;
+let b = 0;
 
 function setup() {
   createCanvas(400, 400);
@@ -70,8 +77,6 @@ function draw() {
     particles[i].show();
   }
 
-
   console.log(frameRate())
-
 
 }

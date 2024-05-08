@@ -1,8 +1,9 @@
 class Balle{
-    constructor(pos){
+    constructor(pos, radius){
         this.pos = pos.copy()
-        this.radius = 10
+        this.radius = radius
 
+        this.randomColor = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
 
         this.speed = createVector(6,0)
         this.gravity = createVector(0,0.5)
@@ -14,27 +15,43 @@ class Balle{
     }
 
     move(){
+        this.speed.add(this.gravity)
+        this.pos.add(this.speed)
+
+
         balles.forEach(balle => {
             if(balle != this){
-                //line(this.pos.x, this.pos.y, balle.pos.x, balle.pos.y)
-                
-                let dx = balle.pos.x - this.pos.x
-                let dy = balle.pos.y - this.pos.y
-                let angle =  atan2(dy,dx)
-
-                if ( angle < 0 )
-                     angle += PI * 2;
-
-                
-                
                 if(circleCircle(this, balle)){
+                    //this.speed.mult(createVector(-1,-1))
+
+
+                    let balle1 = this.pos
+                    let balle2 = balle.pos
+                
+                    let dx = balle1.x - balle2.x
+                    let dy = balle1.y - balle2.y
+                    let angle = atan2(dy,dx)
+                  
+                    if ( angle < 0 )
+                          angle += PI * 2;
+                  
+                    let distX,distY 
+                    distX = cos(angle) * this.radius //balle1.rayon
+                    distY = tan(angle) * distX
+                    
+                    let distX2,distY2
+                    distX2 = cos(angle) * balle.radius //balle2.rayon
+                    distY2 = tan(angle) * distX2
+                
+                
+                    this.pos.x = balle2.x + distX + distX2
+                    this.pos.y = balle2.y + distY + distY2
                     this.speed.mult(createVector(-1,-1))
+                    balle.addForce(this.speed.div(2))
                 }
             }
         });
 
-        this.speed.add(this.gravity)
-        this.pos.add(this.speed)
 
         if(this.pos.y + this.radius > height){
             this.pos.y = height - this.radius
@@ -53,12 +70,17 @@ class Balle{
         this.show()
     }
 
-    show(){
-        ellipse(this.pos.x, this.pos.y, this.radius * 2, this.radius * 2)
+    jump(){
+        this.speed = createVector(random(0,10),-20)
     }
 
-    change_color(color){
-        fill(color)
+    addForce(force){
+        this.speed.add(force)
+    }
+
+    show(){
+        fill(this.randomColor)
+        ellipse(this.pos.x, this.pos.y, this.radius * 2, this.radius * 2)
     }
 }
 

@@ -1,19 +1,22 @@
-let v 
 let balles = []
-let force
-let scale = 30
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(600, 600);
 
-  velocity = createVector(0,1)
-  gravity = createVector(0,9.8)
-  speed = createVector(0,1)
 }
 
 function mousePressed(){
-  v = createVector(mouseX,mouseY)
-  balles.push(new Balle(v)) 
+  let v = createVector(mouseX,mouseY)
+  balles.push(new Balle(v, random(15,30))) 
+}
+
+function keyPressed(){
+  if(keyCode === UP_ARROW){
+    console.log("jump")
+    balles.forEach(b => {
+      b.jump()
+    }); 
+  }
 }
 
 
@@ -26,6 +29,8 @@ function draw() {
   balles.forEach(b => {
     b.move()
   }); 
+
+
 
 
 }
