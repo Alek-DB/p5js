@@ -1,5 +1,5 @@
 let rayon1 = 25
-let rayon2 = 50
+let rayon2 = 25
 
 
 
