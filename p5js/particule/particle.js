@@ -35,7 +35,7 @@ class Particle {
   }
 
   show() {
-/*     switch(state){
+    switch(state){
       case 0: 
         g ++;
         if(g == 255)
@@ -66,9 +66,9 @@ class Particle {
         if(b == 0)
             state = 0;
       break;
-    } */
+    }
 
-    stroke(100,10);
+    stroke(r,g,b,255);
     strokeWeight(1);
     line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
     this.updatePrev();
