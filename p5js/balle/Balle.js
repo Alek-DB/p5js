@@ -9,9 +9,6 @@ class Balle{
         this.gravity = createVector(0,0.5)
         this.bounciness = 0.8
         this.friction = 0.98
-
-
-
     }
 
     move(){

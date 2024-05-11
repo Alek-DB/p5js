@@ -12,7 +12,6 @@ function mousePressed(){
 
 function keyPressed(){
   if(keyCode === UP_ARROW){
-    console.log("jump")
     balles.forEach(b => {
       b.jump()
     }); 

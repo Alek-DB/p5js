@@ -30,7 +30,6 @@ function draw() {
     }
     yoff += increment
   }
-
-  zoff+=0.002
+  zoff+=0.02
 
 }

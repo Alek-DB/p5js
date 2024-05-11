@@ -24,7 +24,7 @@ function setup() {
   rows = floor(height / scl)
   flowfield = new Array(cols * rows);
 
-  for(let i = 0; i < 8; i++){
+  for(let i = 0; i < 200; i++){
     particles[i] = new Particle()
   }
   background(200)
@@ -51,7 +51,7 @@ function draw() {
       xoff+=increment
 
       //FLECHES!!
-  /*     noStroke()
+      noStroke()
       fill(noise(xoff,yoff,zoff) * 100 )
       rect(x * scl, y * scl, scl)
 
@@ -60,7 +60,7 @@ function draw() {
       translate(x * scl, y * scl)
       rotate(v.heading())
       line(0, 0, scl, 0)
-      pop() */
+      pop()
 
 
 
