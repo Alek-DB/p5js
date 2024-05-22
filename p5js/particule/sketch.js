@@ -51,6 +51,8 @@ function draw() {
       xoff+=increment
 
       //FLECHES!!
+
+      /*
       noStroke()
       fill(noise(xoff,yoff,zoff) * 100 )
       rect(x * scl, y * scl, scl)
@@ -61,6 +63,7 @@ function draw() {
       rotate(v.heading())
       line(0, 0, scl, 0)
       pop()
+      */
 
 
 
